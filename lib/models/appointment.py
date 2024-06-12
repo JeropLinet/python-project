@@ -4,7 +4,7 @@ from .doctor import DoctorDB
 
 class AppointmentDB:
     def __init__(self):
-        self.conn=sqlite3.connect("vetpatientmanager")
+        self.conn=sqlite3.connect("vetpatientmanager.db")
         self.cursor=self.conn.cursor()
         self.animal_db=AnimalDB()
         self.doctor_db=DoctorDB()
@@ -25,7 +25,7 @@ class AppointmentDB:
         self.cursor.execute("""
         SELECT appointments.id,animals.name,doctors.name,appointments.time_in FROM appointments
         INNER JOIN animals ON appointments.animal_id = animals.id
-        INNER JOIN doctors ON appointments.doctors_id= doctors.id
+        INNER JOIN doctors ON appointments.doctor_id= doctors.id
         """)
         return self.cursor.fetchall()
     def cancel_appointment(self,appointment_id):
