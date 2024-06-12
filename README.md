@@ -22,6 +22,13 @@ Clone this repository using;
 git clone git@github.com:JeropLinet/python-project.git
 ```
 
+## Execute program
+To run the program,run the following in the terminal
+
+```bash
+python3 cli.py
+```
+
 ## Technologies Used
 Python
 Github
