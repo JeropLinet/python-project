@@ -9,3 +9,7 @@ class AnimalD:
         self.cursor.execute("INSERT INTO animals (name,age,type,breed) VALUES (?,?,?,?)",
                             (name,age,type,breed))
         self.conn.commit()
+
+    def all_animals(self):
+        self.cursor.execute("SELECT * FROM animals")
+        return self.cursor.fetchall()
