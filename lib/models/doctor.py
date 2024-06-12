@@ -24,3 +24,13 @@ class DoctorDB:
                             (doctor_id,))
         self.conn.commit()
         print(f"Doctor with ID:{doctor_id} is removed")
+    
+    def fetch_one_doctor(self,doctor_id):
+        self.cursor.execute("SELECT * FROM doctors WHERE id=?",
+                                (doctor_id,))
+        row=self.cursor.fetchone()
+        if row:
+            return row
+        else:
+            print("Doctor not found")
+            return None

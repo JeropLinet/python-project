@@ -21,28 +21,44 @@ def main():
         elif choice == "2":
             animal_id=int(input("Enter Animal ID:"))
             animal_instance.delete_animal(animal_id)
-
+        
         elif choice == "3":
+            animal_id=int(input("Enter Animal ID:"))
+            animal = animal_instance.fetch_one_animal(animal_id)
+            if animal:
+                print(f"{'Animal ID':<15}{'Name':<25}{'Age':<10}{'Type':<15}{'Breed':<20}")
+                print("-" * 80)
+                print(f"{animal[0]:<15}{animal[1]:<25}{animal[2]:<10}{animal[3]:<15}{animal[4]:<20}")
+            
+        elif choice == "4":
             name = input("Name of Doctor: ")
             speciality = input("Specialisation of Doctor: ")
             doctor_instance.add_doctors(name, speciality)
-
-        elif choice =="4":
+        
+        elif choice =="5":
             doctor_id=int(input("Enter Doctor ID:"))
             doctor_instance.delete_doctor(doctor_id)
-
-        elif choice == "5":
+        
+        elif choice== "6":
+            doctor_id=int(input("Enter Doctor ID:"))
+            doctor= doctor_instance.fetch_one_doctor(doctor_id)
+            if doctor:
+                print(f"{'Doctor ID':<15}{'Name':<25}{'Speciality':<15}")
+                print("-" * 55)
+                print(f"{doctor[0]:<15}{doctor[1]:<25}{doctor[2]:<15}")
+      
+        elif choice == "7":
             animal_id = int(input("Enter Animal ID: "))
             doctor_id = int(input("Enter Doctor ID: "))
             symptoms = input("Symptoms of Animal: ")
             time_in = input("Time of appointment: ")
             appointment_instance.add_appointments(animal_id, doctor_id,symptoms, time_in)
 
-        elif choice == "6":
+        elif choice == "8":
             appointment_id = int(input("Appointment ID: "))
             appointment_instance.cancel_appointment(appointment_id)
 
-        elif choice == "7":
+        elif choice == "9":
             doctors = doctor_instance.all_doctors()
             if doctors:
                 print(f"{'Doctor ID':<15}{'Name':<25}{'Speciality':<15}")
@@ -52,7 +68,7 @@ def main():
             else:
                 print("No doctors found.")
 
-        elif choice == "8":
+        elif choice == "10":
             animals = animal_instance.all_animals()
             if animals:
                 print(f"{'Animal ID':<15}{'Name':<25}{'Age':<10}{'Type':<15}{'Breed':<20}")
@@ -62,7 +78,7 @@ def main():
             else:
                 print("No animals found.")
 
-        elif choice == "9":
+        elif choice == "11":
             appointments = appointment_instance.all_appointments()
             if appointments:
                 print(f"{'Appointment ID':<15}{'Animal Name':<25}{'Doctor Name':<25}{'Time':<20}")
@@ -72,7 +88,7 @@ def main():
             else:
                 print("No appointments found.")
 
-        elif choice == "10":
+        elif choice == "12":
             exit_program()
         else:
             print("Invalid choice")
@@ -82,14 +98,16 @@ def menu():
     print("Please select an option:")
     print("\n1.Log Animal")
     print("2.Delete Animal")
-    print("3.Log Doctor")
-    print("4.Delete Doctor")
-    print("5.Schedule Appointment")
-    print("6.Cancel Appointment")
-    print("7.List of all Doctors")
-    print("8.List of all Animals")
-    print("9.List of all Appointments")
-    print("10.Exit the Program")
+    print("3.Find Animal by ID")
+    print("4.Log Doctor")
+    print("5.Delete Doctor")
+    print("6.Find Doctor by ID")
+    print("7.Schedule Appointment")
+    print("8.Cancel Appointment")
+    print("9.List of all Doctors")
+    print("10.List of all Animals")
+    print("11.List of all Appointments")
+    print("12.Exit the Program")
 
 
 if __name__ == "__main__":

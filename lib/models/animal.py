@@ -24,3 +24,13 @@ class AnimalDB:
                             (animal_id,))
         self.conn.commit()
         print(f"Animal with ID:{animal_id} is removed")
+    
+    def fetch_one_animal(self,animal_id):
+        self.cursor.execute("SELECT * FROM animals WHERE id=?",
+                                (animal_id,))
+        row=self.cursor.fetchone()
+        if row:
+          return row
+        else:
+            print("Animal not found")
+            return None
