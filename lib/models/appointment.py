@@ -20,4 +20,11 @@ class AppointmentDB:
                             (animal_id, doctor_id,symptoms, time_in))
         self.conn.commit()
         print(f"Doctor with ID:{doctor_id} is assigned to Animal with ID:{animal_id}")
-        
+
+    def all_appointments(self):
+        self.cursor.execute("""
+        SELECT appointments.id,animals.name,doctors.name,appointments.time_in FROM appointments
+        INNER JOIN animals ON appointments.animal_id = animals.id
+        INNER JOIN doctors ON appointments.doctors_id= doctors.id
+        """)
+        return self.cursor.fetchall()
