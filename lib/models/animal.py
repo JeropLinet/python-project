@@ -16,11 +16,11 @@ class AnimalDB:
     
     def animal_present(self,animal_id):
         self.cursor.execute("SELECT * FROM animals WHERE id=?",
-                            (animal_id))
-        self.cursor.fetchone()
+                            (animal_id,))
+        return self.cursor.fetchone()
     
     def delete_animal(self,animal_id):
         self.cursor.execute("DELETE FROM animals WHERE id=?",
-                            (animal_id))
+                            (animal_id,))
         self.conn.commit()
         print(f"Animal with ID:{animal_id} is removed")

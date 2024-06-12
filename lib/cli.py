@@ -21,7 +21,7 @@ def main():
         elif choice == "2":
             animal_id=int(input("Enter Animal ID:"))
             animal_instance.delete_animal(animal_id)
-            
+
         elif choice == "3":
             name = input("Name of Doctor: ")
             speciality = input("Specialisation of Doctor: ")
@@ -80,7 +80,7 @@ def main():
 
 def menu():
     print("Please select an option:")
-    print("\n1.Log Patient")
+    print("\n1.Log Animal")
     print("2.Delete Animal")
     print("3.Log Doctor")
     print("4.Delete Doctor")
