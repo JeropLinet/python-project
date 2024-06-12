@@ -13,3 +13,8 @@ class DoctorDB:
     def all_doctors(self):
         self.cursor.execute("SELECT * FROM doctors")
         self.conn.commit()
+   
+    def doctor_present(self,doctor_id):
+        self.cursor.execute("SELECT * FROM doctors WHERE id=?",
+                            (doctor_id))
+        self.cursor.fetchone()

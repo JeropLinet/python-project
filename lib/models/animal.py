@@ -1,6 +1,6 @@
 import sqlite3
 
-class AnimalD:
+class AnimalDB:
     def __init__(self):
         self.conn=sqlite3.connect("vetpatientmanager.db")
         self.cursor=self.conn.cursor()
@@ -13,3 +13,8 @@ class AnimalD:
     def all_animals(self):
         self.cursor.execute("SELECT * FROM animals")
         return self.cursor.fetchall()
+    
+    def animal_present(self,animal_id):
+        self.cursor.execute("SELECT * FROM animals WHERE id=?",
+                            (animal_id))
+        self.cursor.fetchone()
