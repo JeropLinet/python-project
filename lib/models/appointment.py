@@ -28,3 +28,8 @@ class AppointmentDB:
         INNER JOIN doctors ON appointments.doctors_id= doctors.id
         """)
         return self.cursor.fetchall()
+    def cancel_appointment(self,appointment_id):
+        self.cursor.execute("DELETE FROM appointments WHERE id=?",
+                            (appointment_id))
+        self.conn.commit()
+        print(f"Appointment with ID:{appointment_id} is Canceled :( )")

@@ -18,3 +18,9 @@ class AnimalDB:
         self.cursor.execute("SELECT * FROM animals WHERE id=?",
                             (animal_id))
         self.cursor.fetchone()
+    
+    def delete_animal(self,animal_id):
+        self.cursor.execute("DELETE FROM animals WHERE id=?",
+                            (animal_id))
+        self.conn.commit()
+        print(f"Animal with ID:{animal_id} is removed")
