@@ -21,11 +21,13 @@ class DoctorDB:
                             (doctor_id,))
         return self.cursor.fetchone()
     
-    def delete_doctor(self,doctor_id):
-        self.cursor.execute("DELETE FROM doctors WHERE id=?",
-                            (doctor_id,))
-        self.conn.commit()
-        print(f"Doctor with ID:{doctor_id} is removed")
+    def delete_doctor(self, doctor_id):
+     if not self.doctor_present(doctor_id):
+        print(f"Doctor with ID:{doctor_id} is not in our database")
+        return
+     self.cursor.execute("DELETE FROM doctors WHERE id = ?", (doctor_id,))
+     self.conn.commit()
+     print(f"Doctor with ID:{doctor_id} has been removed.")
     
     def fetch_one_doctor(self,doctor_id):
         self.cursor.execute("SELECT * FROM doctors WHERE id=?",

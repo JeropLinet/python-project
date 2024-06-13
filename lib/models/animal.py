@@ -21,12 +21,16 @@ class AnimalDB:
                             (animal_id,))
         return self.cursor.fetchone()
     
-    def delete_animal(self,animal_id):
-        self.cursor.execute("DELETE FROM animals WHERE id=?",
-                            (animal_id,))
-        self.conn.commit()
-        print(f"Animal with ID:{animal_id} is removed")
-    
+    def delete_animal(self, animal_id):
+ 
+     if not self.animal_present(animal_id):
+        print(f"Animal with ID:{animal_id} is not in our database")
+        return
+     
+     self.cursor.execute("DELETE FROM animals WHERE id = ?", (animal_id,))
+     self.conn.commit()
+     print(f"Animal with ID:{animal_id} has been removed.")
+
     def fetch_one_animal(self,animal_id):
         self.cursor.execute("SELECT * FROM animals WHERE id=?",
                                 (animal_id,))

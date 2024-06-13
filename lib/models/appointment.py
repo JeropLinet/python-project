@@ -28,8 +28,16 @@ class AppointmentDB:
         INNER JOIN doctors ON appointments.doctor_id= doctors.id
         """)
         return self.cursor.fetchall()
-    def cancel_appointment(self,appointment_id):
-        self.cursor.execute("DELETE FROM appointments WHERE id=?",
+    
+    def appointment_present(self,appointment_id):
+        self.cursor.execute("SELECT * FROM appointments WHERE id=?",
                             (appointment_id,))
-        self.conn.commit()
-        print(f"\nAppointment with ID:{appointment_id} is Canceled :( ")
+        return self.cursor.fetchone()
+    
+    def cancel_appointment(self, appointment_id):
+     if not self.appointment_present(appointment_id):
+        print(f"Appointment with ID:{appointment_id} is not in our database")
+        return
+     self.cursor.execute("DELETE FROM appointments WHERE id = ?", (appointment_id,))
+     self.conn.commit()
+     print(f"Appointment with ID:{appointment_id} has been canceled.")
