@@ -23,15 +23,17 @@ git clone git@github.com:JeropLinet/python-project.git
 ```
 
 ## Execute program
-To run the program,run the following in the terminal
+To run the program, execute the following command in the terminal:
 
 ```bash
 python3 cli.py
 ```
+This will give you a number of choices; pick one.
 
 ## Technologies Used
 Python
-Github
+SQLite3
+GitHub  
 
 ## Support and Contact details
 [My GitHub account] (https://github.com/JeropLinet)

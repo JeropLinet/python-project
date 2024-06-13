@@ -30,6 +30,6 @@ class AppointmentDB:
         return self.cursor.fetchall()
     def cancel_appointment(self,appointment_id):
         self.cursor.execute("DELETE FROM appointments WHERE id=?",
-                            (appointment_id))
+                            (appointment_id,))
         self.conn.commit()
-        print(f"Appointment with ID:{appointment_id} is Canceled :( )")
+        print(f"\nAppointment with ID:{appointment_id} is Canceled :( ")

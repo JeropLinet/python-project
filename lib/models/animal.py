@@ -9,6 +9,8 @@ class AnimalDB:
         self.cursor.execute("INSERT INTO animals (name,age,type,breed) VALUES (?,?,?,?)",
                             (name,age,type,breed))
         self.conn.commit()
+        animal_id=self.cursor.lastrowid
+        return animal_id
 
     def all_animals(self):
         self.cursor.execute("SELECT * FROM animals")

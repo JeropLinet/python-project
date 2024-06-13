@@ -10,13 +10,15 @@ def main():
     appointment_instance=AppointmentDB()
     while True:
         menu()
-        choice = input(">")
+        choice = input("\n>")
         if choice == "1":
             name = input("Name of Animal: ")
             age = int(input("Age of Animal(weeks): "))
             type = input("Type of Animal: ")  # Renamed to type_ to avoid conflict with Python keyword
             breed = input("Breed of Animal: ")
-            animal_instance.add_animal(name, age, type, breed)
+            animal_id=animal_instance.add_animal(name, age, type, breed)
+            print(f"\nAnimal with ID {animal_id} Logged")
+
         
         elif choice == "2":
             animal_id=int(input("Enter Animal ID:"))
@@ -27,13 +29,14 @@ def main():
             animal = animal_instance.fetch_one_animal(animal_id)
             if animal:
                 print(f"{'Animal ID':<15}{'Name':<25}{'Age':<10}{'Type':<15}{'Breed':<20}")
-                print("-" * 80)
+                print("-" * 55)
                 print(f"{animal[0]:<15}{animal[1]:<25}{animal[2]:<10}{animal[3]:<15}{animal[4]:<20}")
             
         elif choice == "4":
             name = input("Name of Doctor: ")
             speciality = input("Specialisation of Doctor: ")
-            doctor_instance.add_doctors(name, speciality)
+            doctor_id=doctor_instance.add_doctors(name, speciality)
+            print(f"\nDoctor with ID {doctor_id} Logged")
         
         elif choice =="5":
             doctor_id=int(input("Enter Doctor ID:"))
@@ -95,7 +98,7 @@ def main():
 
 
 def menu():
-    print("Please select an option:")
+    print("\nPlease select an option:")
     print("\n1.Log Animal")
     print("2.Delete Animal")
     print("3.Find Animal by ID")

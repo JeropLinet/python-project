@@ -9,6 +9,8 @@ class DoctorDB:
         self.cursor.execute("INSERT INTO doctors (name,specialization) VALUES (?,?)",
                             (name,specialization))
         self.conn.commit()
+        doctor_id=self.cursor.lastrowid
+        return doctor_id
 
     def all_doctors(self):
         self.cursor.execute("SELECT * FROM doctors")
