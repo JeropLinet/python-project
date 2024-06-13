@@ -36,3 +36,13 @@ class DoctorDB:
         else:
             print("Doctor not found")
             return None
+    
+    def update_doctor_name(self,old_name,new_name):
+        self.cursor.execute("UPDATE doctors SET name=? WHERE name=?",
+                            
+                            (new_name,old_name))
+        self.conn.commit()
+        if self.cursor.rowcount == 0:
+          print("Update failed: No doctor found with the provided name.")
+        else:
+         print(f"{old_name}'s name has been updated to {new_name}.")

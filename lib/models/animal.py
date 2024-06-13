@@ -36,3 +36,13 @@ class AnimalDB:
         else:
             print("Animal not found")
             return None
+        
+    def update_animal_name(self,old_name,new_name):
+        self.cursor.execute("UPDATE animals SET name=? WHERE name=?",
+                            
+                            (new_name,old_name))
+        self.conn.commit()
+        if self.cursor.rowcount == 0:
+          print("Update failed: No animal found with the provided name.")
+        else:
+         print(f"{old_name}'s name has been updated to {new_name}.")
